@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var Car = require("./models/car");
+const bodyParser = require("body-parser"); 
 
 require('dotenv').config();
 const connectionString =

@@ -1,0 +1,28 @@
+extends layout
+block content
+ h1= title
+ form(id='CarForm', action="/resource/cars", method="POST")
+  div.form-group
+   label.carAttr(for='car_manufacturer') Car Manufacturer
+   input#car_manufacturer(type='text', name='car_manufacturer')
+  div.form-group
+   label.carAttr(for='car_model') Car Brand 
+   input#car_model(type='text', name='car_model')
+  div.form-group
+   label.carAttr(for='car_cost') Car Cost 
+   input#car_cost(type='text', name='car_cost')
+  input(type="submit")
+ script.
+  document.forms['CarForm'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) 
+    }).then((resp) => {
+        return resp.json();
+    }).then((body) => {
+        alert("Save succeded")
+    }).catch((error) => {
+        alert("Save failed " + error )
+    });
+   }); 

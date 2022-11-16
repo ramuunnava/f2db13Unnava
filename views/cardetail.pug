@@ -1,0 +1,28 @@
+extends layout
+
+block content
+ h1= title
+
+  if(toShow == null)
+    h2 No instance to detail
+  else
+    - let carid = toShow._id
+    - let car_manufacturer = toShow.car_manufacturer
+    - let car_model = toShow.car_model
+    - let car_cost = toShow.car_cost
+    - let actionid = "/resource/car/" + carid
+    script let actionid = "#{actionid}"
+    div
+    div.row
+    div(class='carAttr mr-3') Car ID is: 
+       div #{carid}
+    div.row
+    div(class='carAttr mr-3') Car manufacturer is: 
+       div #{car_manufacturer}
+    div.row
+    div(class='carAttr mr-3') Car Model is: 
+       div #{car_model}
+    div.row
+    div(class='carAttr mr-3') Car Cost is:
+      div #{car_cost}
+    
