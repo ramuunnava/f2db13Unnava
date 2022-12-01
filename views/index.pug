@@ -1,19 +1,13 @@
 extends layout
 
-block content
-  h1= title
-  p leonel messi greatest of all time.
-  button(type="button", class="btn btn-success", onclick="doBump()") Press Me
-  div(id="bump") Bump the Count 
-  script.
-   let count=0
-   let bump=1
-   function doBump(){
-    count=count+bump;
-    bump=bump+1;
-    document.getElementById('bump').innerHTML=`Count ${count} with Bump ${bump}`
-    console.log(count
-    )
-   }    
-  
-   a(href="car", class="link-info") car
+block content 
+  //- a(href='car') Car
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/car") Take me to car
+    br
+    a(href="/logout") Logout

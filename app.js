@@ -17,7 +17,12 @@ passport.use(new LocalStrategy(
   }
   return done(null, user);
   });
-  }))
+  }));
+  
+   var Account =require(('./models/account'));
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 var mongoose = require('mongoose');
 var Car = require("./models/car");
 const bodyParser = require("body-parser"); 
